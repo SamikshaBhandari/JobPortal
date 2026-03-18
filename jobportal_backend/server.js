@@ -2,7 +2,8 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const db = require('./db/db'); 
-const authRoutes = require('./routes/authRoutes'); 
+const authRoutes = require('./routes/authRoutes');
+const jobRoutes=require('./routes/jobRoutes');
 
 const app = express();
 
@@ -17,6 +18,7 @@ db.query("SELECT 1")
     });
 
 app.use('/api', authRoutes);
+app.use('/api/jobs', jobRoutes);
 
 app.get('/', (req, res) => {
     res.send("Backend server is running successfully");
